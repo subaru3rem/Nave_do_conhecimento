@@ -13,31 +13,25 @@ body{
   display: flex;
   justify-content: space-between;
   background-color:var(--cor_primaria);
-  font-size: 120%;
+  font-family:'Times New Roman', Times, serif;
 }
 .item_menu{
   margin: 0%;
   display: flex;
 }
 .menu_link{
-  padding: 20px;
-  border: none;
-  background-color:var(--cor_primaria);
-  color: var(--TextoPrincipal);
-  font-size: 100%;
+padding: 20px;
+border: none;
+color: var(--TextoPrincipal);
+font-size: 120%;
+background-color: var(--cor_primaria);
 }
 .menu_link:hover{
-  padding:20px;
-  border: none;
-  background-color: var(--cor_secundaria);
-  color: navy;
-  text-decoration: none;
-}
-form{
-  display: flex;
-  justify-content: end;
-  margin: 0px 0px;
-  text-align: left;
+padding:20px;
+border: none;
+background-color: var(--cor_secundaria);
+color: navy;
+text-decoration: none;
 }
 .item_unidade{
   display: flex;

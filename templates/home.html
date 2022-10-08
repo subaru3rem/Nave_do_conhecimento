@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Nave do conhecimento</title>
-    <link rel="stylesheet" href="css/style_home.css">
-    <link rel="icon" href="imagens/Logo-Nave-titulo.png">
+    <link rel="stylesheet" href="{{url_for('static', filename='style/style_home.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='imagens/Logo-Nave-titulo.png')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 <body>
         <header class="menu">
-            <a class="menu_link" class="item_menu" href="home.html">Nave do Conhecimento</a>
+            <a class="menu_link" class="item_menu" href="/">Nave do Conhecimento</a>
             <nav class="item_menu">
                 <a class="menu_link" href="https://capacitacao.navedoconhecimento.rio/">Cursos</a>
-                <a class="menu_link" href="eventos.html">Eventos</a>
-                <a class="menu_link" href="unidades.html">Unidades</a>
-                <a class="menu_link" href="area do aluno.html">Area do aluno</a>
+                <a class="menu_link" href="/eventos">Eventos</a>
+                <a class="menu_link" href="/unidades">Unidades</a>
+                <a class="menu_link" href="/user">Area do aluno</a>
             </nav>
         </header>
 
         <section class="destaque">
-          <img class="img_destaque" src="imagens/Logo-Nave-azul.png" alt="">
+          <img class="img_destaque" src="{{url_for('static', filename='imagens/Logo-Nave-azul.png')}}" alt="">
           <div class="texto_d">
                <h1>Nave do conhecimento</h1>
                <h3>o que somos...</h3>
@@ -42,22 +42,22 @@
             <h2>Principais Cursos</h2>
             <div class="cursos">
                 <p class="curso_item">
-                  <a href="#"><img src="imagens/html e css.jpg" width="90%" height="90%"></a>
+                  <a href="#"><img src="{{url_for('static', filename='imagens/html e css.jpg')}}" width="90%" height="90%"></a>
                     <br>
                     <a href="#">Front end</a>
                 </p>
                 <p class="curso_item">
-                    <a href="#"><img src="imagens/python.jpg" width="90%" height="90%"></a>
+                    <a href="#"><img src="{{url_for('static', filename='imagens/python.jpg')}}"" width="90%" height="90%"></a>
                     <br>
                     <a href="#">Python</a>
                 </p>
                 <p class="curso_item">
-                  <a href="#"><img src="imagens/rede.jpg" width="90%" height="90%"></a>
+                  <a href="#"><img src="{{url_for('static', filename='imagens/rede.jpg')}}" width="90%" height="90%"></a>
                     <br>
                     <a href="#">CCNA</a>
                 </p>
                 <p class="curso_item">
-                  <a href="#"><img src="imagens/it imagem.jpg" width="90%" height="90%"></a>
+                  <a href="#"><img src="{{url_for('static', filename='imagens/it imagem.jpg')}}" width="90%" height="90%"></a>
                     <br>
                     <a href="#">It Essentials</a>
                 </p>

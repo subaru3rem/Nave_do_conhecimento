@@ -15,7 +15,7 @@
     display: flex;
     justify-content: space-between;
     background-color:var(--cor_primaria);
-    font-size: 120%;
+    font-family:'Times New Roman', Times, serif;
   }
   .item_menu{
     margin: 0%;
@@ -26,7 +26,7 @@
     border: none;
     background-color:var(--cor_primaria);
     color: var(--TextoPrincipal);
-    font-size: 100%;
+    font-size: 120%;
   }
   .menu_link:hover{
     padding:20px;

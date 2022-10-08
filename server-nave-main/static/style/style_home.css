@@ -1,0 +1,110 @@
+:root{
+  --TextoPrincipal: white;
+  --cor_primaria: #34495e;
+  --cor_secundaria: #03dac6;
+  --cor_terciaria: rgba(142, 142, 143, 0.349);
+
+}
+body{
+    background-image: url(sky.jpg);
+    margin: auto;
+  }
+.menu{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--cor_primaria);
+    font-family:'Times New Roman', Times, serif;
+  }
+.item_menu{
+    margin: 0%;
+    display: flex;
+  }
+.menu_link{
+  padding: 20px;
+  border: none;
+  color: var(--TextoPrincipal);
+  font-size: 120%;
+  background-color: var(--cor_primaria);
+}
+.menu_link:hover{
+  padding:20px;
+  border: none;
+  background-color: var(--cor_secundaria);
+  color: navy;
+  text-decoration: none;
+}
+.destaque{
+    margin: 4% 10% 4% 10%;
+    border-style:hidden;
+    text-align: justify;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    color: var(--TextoPrincipal);
+  }
+.img_destaque{
+    width: 30%;
+    height: auto;
+    margin: 0px 5%;
+    border: 5px black;
+  }
+.texto_d{
+    margin: 0% 30px 0% 30px;
+    padding: auto;
+  }
+.cursos{
+   flex-wrap: wrap;
+   display: flex;
+   justify-content: space-around;
+  text-align: center;
+  }
+.curso_item{
+  background-color: var(--cor_terciaria);
+  padding: 1%;
+  border-radius: 10px;
+  width: 20%;
+  height: auto;
+}
+.fundo_cursos{
+  display: inline;
+  text-align: center;
+  color: var(--TextoPrincipal);
+}
+.cor_fundo{
+  box-shadow:0px 0px 25px rgba(0, 0, 0, 1);
+  padding: 5px;
+}
+footer{
+  border: 25px;
+  margin: none;
+  padding: 10px 0px 3px 0px;
+  text-align: center;
+  border-radius: 5px 5px 0px 0px;
+  color: var(--TextoPrincipal);
+}
+a:link{
+  color: var(--TextoPrincipal);
+  text-decoration: none;
+  }
+a:hover{
+    text-decoration: underline;
+  }
+a:visited{
+  color: var(--TextoPrincipal);
+} 
+@media only screen and (max-width: 1000px){
+  .curso_item{
+    width: 40%;
+  }
+  .destaque{
+    flex-wrap: wrap;
+  }
+}
+@media only screen and (max-width: 700px){
+  .curso_item{
+    width: 90%;
+  }
+  .destaque{
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Area do aluno</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style/style_area do aluno.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='imagens/Logo-Nave-titulo.png')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+</head>
+<body>
+    <div>
+        <header class="menu">
+            <a class="menu_link" class="item_menu" href="/">Nave do Conhecimento</a>
+            <nav class="item_menu">
+                <a class="menu_link" href="https://capacitacao.navedoconhecimento.rio/">Cursos</a>
+                <a class="menu_link" href="/eventos">Eventos</a>
+                <a class="menu_link" href="/unidades">Unidades</a>
+                <a class="menu_link" href="/user">Area do aluno</a>
+            </nav>
+        </header>
+
+        <section class="login">
+            <form action="{{url_for('validacion')}}" method="post">
+            <h3>User</h3> 
+            <input class="button" type="text" name="login">
+            <br>
+            <h3>Senha</h3>
+            <input class="button" type="password" name="senha">
+            <br>
+            <br>
+            <button class="button" type="submit">acepted</button>
+            </form>
+        </section>
+
+        <section class="aluno">
+            <div class="menu_top">
+                <h2>Cainã Costa</h2>
+            </div>
+            <div class="menu_center"></div>
+            <div class="menu_botom"></div>
+        </section>
+    </div>
+    <footer>
+        <p>Nave do conhecimento<br><br>Prefeitura do Rio de Janeiro</p>
+    </footer>
+</body>
+</html>

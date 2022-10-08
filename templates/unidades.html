@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Unidades</title>
-    <link rel="stylesheet" href="css/style_unidades.css">
-    <link rel="icon" href="imagens/Logo-Nave-titulo.png">
+    <link rel="stylesheet" href="{{url_for('static', filename='style/style_unidades.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='imagens/Logo-Nave-titulo.png')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 <body>
     <header class="menu">
-        <a class="menu_link" class="item_menu" href="home.html">Nave do Conhecimento</a>
-        <nav class="item_menu">
-            <a class="menu_link" href="https://capacitacao.navedoconhecimento.rio/">Cursos</a>
-            <a class="menu_link" href="eventos.html">Eventos</a>
-            <a class="menu_link" href="unidades.html">Unidades</a>
-            <a class="menu_link" href="area do aluno.html">Area do aluno</a>
+        <a class="menu_link" class="item_menu" href="/">Nave do Conhecimento</a>
+            <nav class="item_menu">
+                <a class="menu_link" href="https://capacitacao.navedoconhecimento.rio/">Cursos</a>
+                <a class="menu_link" href="/eventos">Eventos</a>
+                <a class="menu_link" href="/unidades">Unidades</a>
+                <a class="menu_link" href="/user">Area do aluno</a>
+            </nav>
         </nav>
     </header>
         </div>
     </header>
 
     <section class="item_unidade">
-        <img class="img_unidade" src="imagens/nave-ol.jpg">
+        <img class="img_unidade" src="{{url_for('static', filename='imagens/nave-ol.jpg')}}">
         <div>
             <h2>Nave Olimpica</h2> 
             <p>
@@ -39,7 +40,7 @@ Museu Cidade Olímpica – Terça a sábado – de 10:00 às 20:00, Domingos –
         </div>
     </section>
     <section class="item_unidade">
-        <img class="img_unidade" src="imagens/iraja.jpg" alt="">
+        <img class="img_unidade" src="{{url_for('static', filename='imagens/iraja.jpg')}}" alt="">
         <div>
             <h2>Iraja</h2>
             <p>
@@ -57,7 +58,7 @@ Domingos e feriados: Fechada<br>
         </div>
     </section>
     <section class="item_unidade">
-        <img class="img_unidade" src="imagens/madu_city.jpg" alt="">
+        <img class="img_unidade" src="{{url_for('static', filename='imagens/madu_city.jpg')}}" alt="">
         <div>
             <h2>Madureira</h2>
             <p>
@@ -75,7 +76,7 @@ Segunda-feira e feriados: Fechada<br>
         </div>
     </section>
     <section class="item_unidade">
-        <img class="img_unidade" src="imagens/nova_brasilia.jpg" alt="">
+        <img class="img_unidade" src="{{url_for('static', filename='imagens/nova_brasilia.jpg')}}" alt="">
         <div>
             <h2>Nova Brasilia</h2>
             <p>
@@ -94,7 +95,7 @@ Não abrirá ao público aos domingos e feriados<br>
     </section>
     
     <section class="item_unidade">
-<img class="img_unidade" src="imagens/padre_miguel.jpg">
+<img class="img_unidade" src="{{url_for('static', filename='imagens/padre_miguel.jpg')}}">
 <div>
 <h2>Padre Miguel</h2>
  <p>
@@ -113,7 +114,7 @@ Domingos e feriados: Fechada
 </section>
 
 <section class="item_unidade">
-<img class="img_unidade" src="imagens/penha.jpg">
+<img class="img_unidade" src="{{url_for('static', filename='imagens/penha.jpg')}}">
 <div>
 <h2>Penha</h2>
 <p>
@@ -132,7 +133,7 @@ Domingos e feriados: Fechada<br>
 </section>
 
 <section class="item_unidade">
-<img class="img_unidade" src="imagens/santa_cruz.jpg">
+<img class="img_unidade" src="{{url_for('static', filename='imagens/santa_cruz.jpg')}}">
 <div>
 <h2>Santa Cruz</h2>
 <p>
@@ -152,7 +153,7 @@ Domingos e feriados: Fechada
 </section>
 
 <section class="item_unidade">
-<img class="img_unidade" src="imagens/vila_aliança.jpg">
+<img class="img_unidade" src="{{url_for('static', filename='imagens/vila_aliança.jpg')}}">
 <div>
 <h2>Vila aliança</h2>
 <p>
@@ -171,7 +172,7 @@ Domingos e feriados: Fechada
 </section>
 
 <section class="item_unidade">
-<img class="img_unidade" src="imagens/triagem.jpg">
+<img class="img_unidade" src="{{url_for('static', filename='imagens/triagem.jpg')}}">
 <div>
 <h2>Triagem</h2>
 <p>

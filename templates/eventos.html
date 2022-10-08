@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Eventos</title>
-    <link rel="stylesheet" href="css/style_evento.css">
-    <link rel="icon" href="imagens/Logo-Nave-titulo.png">
+    <link rel="stylesheet" href="{{url_for('static', filename='style/style_evento.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='imagens/Logo-Nave-titulo.png')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <div>
         <header class="menu">
-            <a class="menu_link" class="item_menu" href="home.html">Nave do Conhecimento</a>
+            <a class="menu_link" class="item_menu" href="/">Nave do Conhecimento</a>
             <nav class="item_menu">
                 <a class="menu_link" href="https://capacitacao.navedoconhecimento.rio/">Cursos</a>
-                <a class="menu_link" href="eventos.html">Eventos</a>
-                <a class="menu_link" href="unidades.html">Unidades</a>
-                <a class="menu_link" href="area do aluno.html">Area do aluno</a>
+                <a class="menu_link" href="/eventos">Eventos</a>
+                <a class="menu_link" href="/unidades">Unidades</a>
+                <a class="menu_link" href="/user">Area do aluno</a>
             </nav>
         </header>
 

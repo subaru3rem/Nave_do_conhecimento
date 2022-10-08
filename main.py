@@ -20,6 +20,6 @@ def user():
 def validacion():
     if request.method == "POST":
         x = request.form.get("login")
-        print(x)
+        y = request.form.get("senha")
         return render_template("log_user.html", account=x) 
 app.run(debug=True)

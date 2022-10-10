@@ -1,3 +1,5 @@
+from distutils.log import error
+from fileinput import filename
 from flask import *
 import mysql.connector
 import requests
@@ -24,7 +26,9 @@ def eventos():
 @app.route("/user")
 def user():    
     return render_template("area do aluno.html")
-@app.route('/user/usuario', methods =["GET", "POST"])
+def Login(login):
+    return render_template("log_user.html", account=login)
+@app.route('/user', methods =["GET", "POST"])
 def validacion():
     if request.method == "POST":
         login = request.form.get("login")
@@ -33,9 +37,7 @@ def validacion():
         cursor.execute(verificação)
         verif = cursor.fetchone()
         if verif[0] == senha:
-            return render_template("log_user.html", account=login)
-        else:
-            return 'ERROR'
-
-         
+            return Login(login)
+        else: 
+            return user()        
 app.run(debug=True)

@@ -35,33 +35,33 @@ body{
 }
 .login{
     text-align: center;
-    margin: 8% 23% 8% 22% ;
-    padding: 30px 0px 60px 0px;
+    margin: 3% 15% 3% 15% ;
+    padding: 15px 0px 50px 0px;
     font-size: 120%;
     color: var(--TextoPrincipal);
     border-radius: 20px;
     box-shadow:0px 0px 25px rgba(0, 0, 0, 1);
 }
 .button{
-  padding: 2% 4%;
+  padding: 1% 4%;
   border: none;
   background-color:white;
   font-size: 90%;
   border-radius: 20px;
-  margin: 2%;
+  margin: 1%;
 }
 .aluno{
   display: none;
   background-color: #70afd6;
 }
-  footer{
-    box-shadow:0px 0px 25px rgba(0, 0, 0, 1);
-    margin: none;
-    padding: 10px 0px 3px 0px;
-    text-align: center;
-    border-radius: 5px 5px 0px 0px;
-    color: var(--TextoPrincipal);
-    align-items: end;
+footer{
+  box-shadow:0px 0px 25px rgba(0, 0, 0, 1);
+  margin: none;
+  padding: 10px 0px 3px 0px;
+  text-align: center;
+  border-radius: 5px 5px 0px 0px;
+  color: var(--TextoPrincipal);
+  align-items: end;
 }
 .button:hover{
   background-color: var(--cor_secundaria);
@@ -77,3 +77,7 @@ a:hover{
 a:visited{
     color: var(--TextoPrincipal);
   }
+#error{
+  color: red;
+  font-size: 90%;
+}

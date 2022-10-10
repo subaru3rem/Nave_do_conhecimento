@@ -29,9 +29,18 @@
             <h3>Senha</h3>
             <input class="button" type="password" name="senha">
             <br>
+            {% with messages = get_flashed_messages() %}
+            {%print(menssages)%}
+            {% if messages %}
+            <p id="error">
+              {{ messages[0] }}
+            </p>
+            {% endif %}
+            {% endwith %}
             <br>
             <button class="button" type="submit">acepted</button>
             </form>
+            
         </section>
 
         <section class="aluno">

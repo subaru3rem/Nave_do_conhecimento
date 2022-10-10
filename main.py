@@ -13,6 +13,7 @@ mydb = mysql.connector.connect(
 cursor = mydb.cursor()
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'secret-key-goes-here'
 
 @app.route('/')
 def home():
@@ -24,7 +25,7 @@ def unidades():
 def eventos():
     return render_template("eventos.html")
 @app.route("/user")
-def user():    
+def user():
     return render_template("area do aluno.html")
 def Login(login):
     return render_template("log_user.html", account=login)
@@ -36,8 +37,14 @@ def validacion():
         verificação = f"select senha from usuarios where login='{login}'"
         cursor.execute(verificação)
         verif = cursor.fetchone()
-        if verif[0] == senha:
+        print(verif)
+        if verif == None:
+            flash('Login não encontrado')
+            return user()
+        else:
+         if verif[0] == senha:
             return Login(login)
-        else: 
-            return user()        
+         else: 
+            flash('Senha incorreta')
+            return user()    
 app.run(debug=True)

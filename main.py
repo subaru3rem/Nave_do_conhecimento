@@ -2,7 +2,6 @@ from distutils.log import error
 from fileinput import filename
 from flask import *
 import mysql.connector
-import requests
 
 mydb = mysql.connector.connect(
     host='localhost',

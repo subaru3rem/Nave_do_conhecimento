@@ -10,14 +10,16 @@
         function bt_log() {
             document.getElementById('cad').style.display = 'none';
             document.getElementById('log').style.display = 'block';
-            document.getElementById('btcad').style.boxShadow = '0px 0px 25px rgba(0, 0, 0, 1)';
+            document.getElementById('btcad').style.boxShadow = 'inset 0px 0px 25px rgba(0, 0, 0, 0.5)';
             document.getElementById('btlog').style.boxShadow = 'none';
+            document.getElementById('btcad').style.borderRadius =  '0px 20px 0px 0px';
         }
         function bt_cad() {
             document.getElementById('log').style.display = 'none';
             document.getElementById('cad').style.display = 'block';
-            document.getElementById('btlog').style.boxShadow = '0px 0px 25px rgba(0, 0, 0, 1)';
+            document.getElementById('btlog').style.boxShadow = 'inset 0px 0px 25px rgba(0, 0, 0, 0.5)';
             document.getElementById('btcad').style.boxShadow = 'none';
+            document.getElementById('btlog').style.borderRadius = '20px 0px 0px 0px';
         }
     </script>
 

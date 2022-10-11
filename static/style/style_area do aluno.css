@@ -33,26 +33,48 @@ body{
   color: navy;
   text-decoration: none;
 }
+#destaque{
+  box-shadow:0px 0px 25px rgba(0, 0, 0, 1);
+  margin: 3% 15% 3% 15% ;
+}
+#menu{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 0px 0px 0px;
+}
+#menu button{
+  padding: 2% 22.5%;
+  background-color: rgba(0, 0, 0, 0);
+  color: var(--TextoPrincipal);
+  border: none;
+  margin: none;
+}
+#cad{
+  display: none;
+}
 .login{
     text-align: center;
-    margin: 3% 15% 3% 15% ;
     padding: 15px 0px 50px 0px;
     font-size: 120%;
     color: var(--TextoPrincipal);
-    border-radius: 20px;
-    box-shadow:0px 0px 25px rgba(0, 0, 0, 1);
+    border-radius: 0px 0px 20px 20px;
 }
 .button{
   padding: 1% 4%;
   border: none;
-  background-color:white;
-  font-size: 90%;
+  background-color:var(--cor_secundaria);
+  font-size: 80%;
   border-radius: 20px;
   margin: 1%;
 }
-.aluno{
-  display: none;
-  background-color: #70afd6;
+.input{
+  padding: 1% 4%;
+  border: none;
+  background-color:white;
+  font-size: 80%;
+  border-radius: 20px;
+  margin: 1%;
 }
 footer{
   box-shadow:0px 0px 25px rgba(0, 0, 0, 1);

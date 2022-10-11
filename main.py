@@ -28,6 +28,9 @@ def user():
     return render_template("area do aluno.html")
 def Login(login):
     return render_template("log_user.html", account=login)
+@app.route('/cad', methods = ["GET", "POST"])
+def cad():
+    pass
 @app.route('/user', methods =["GET", "POST"])
 def validacion():
     if request.method == "POST":

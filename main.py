@@ -10,7 +10,7 @@ mydb = mysql.connector.connect(
     database = 'serve_nave'
 )
 cursor = mydb.cursor()
-
+#jp é um cuzão
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret-key-goes-here'
 
@@ -36,15 +36,15 @@ def validacion():
     if request.method == "POST":
         login = request.form.get("login")
         senha = request.form.get("senha")
-        verificação = f"select senha from usuarios where login='{login}'"
+        sql = f"select senha from usuarios where login='{login}'"
         cursor.execute(verificação)
-        verif = cursor.fetchone()
-        print(verif)
-        if verif == None:
+        verificação = cursor.fetchone()
+        print(verificação)
+        if verificação == None:
             flash('Login não encontrado')
             return user()
         else:
-         if verif[0] == senha:
+         if verificação[0] == senha:
             return Login(login)
          else: 
             flash('Senha incorreta')

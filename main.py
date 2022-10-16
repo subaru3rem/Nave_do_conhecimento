@@ -1,5 +1,6 @@
 from distutils.log import error
 from fileinput import filename
+from nturl2path import pathname2url
 from flask import *
 import mysql.connector
 
@@ -28,25 +29,42 @@ def user():
     return render_template("area do aluno.html")
 def Login(login):
     return render_template("log_user.html", account=login)
-@app.route('/cad', methods = ["GET", "POST"])
-def cad():
-    pass
 @app.route('/user', methods =["GET", "POST"])
 def validacion():
     if request.method == "POST":
         login = request.form.get("login")
         senha = request.form.get("senha")
-        sql = f"select senha from usuarios where login='{login}'"
-        cursor.execute(sql)
-        verificação = cursor.fetchone()
-        print(verificação)
-        if verificação == None:
-            flash('Login não encontrado')
-            return user()
+        cad = request.form.get("cad")
+        cad_senha = request.form.get("senha1")
+        confirmação = request.form.get("senha2")
+        if login == None:
+            if cad == '':
+                return user()
+            else:
+                sql = f"select login from usuarios where login='{cad}'"
+                cursor.execute(sql)
+                verificação = cursor.fetchone()
+                if verificação == None:
+                    if cad_senha == confirmação:
+                        cursor.execute(f"insert into usuarios values ('{cad}', '{cad_senha}')")
+                        mydb.commit()
+                        return Login(cad)
+                    else: 
+                        flash("senhas_distintas")
+                        return user()
+                else:
+                    flash('login_cadastrado')
+                    return user()
         else:
-         if verificação[0] == senha:
-            return Login(login)
-         else: 
-            flash('Senha incorreta')
-            return user()    
+            sql = f"select senha from usuarios where login='{login}'"
+            cursor.execute(sql)
+            verificação = cursor.fetchone()
+            if verificação == None:
+                flash('login_inexistente')
+                return user()
+            elif verificação[0] == senha:
+                return Login(login)
+            else:
+                flash('senha_incorreta')
+                return user()
 app.run(debug=True)

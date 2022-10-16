@@ -21,6 +21,20 @@
             document.getElementById('btcad').style.boxShadow = 'none';
             document.getElementById('btlog').style.borderRadius = '20px 0px 0px 0px';
         }
+        function login_inexistente() {
+            document.getElementById("error").innerHTML = "Login não cadastrado";
+        }
+        function senha_incorreta() {
+            document.getElementById("error").innerHTML = "Senha incorreta";
+        }
+        function login_cadastrado() {
+            document.getElementById("erro").innerHTML = "Login ja cadastrado";
+            bt_cad()
+        }
+        function senhas_distintas() {
+            document.getElementById("erro").innerHTML = "As senhas não são correspondentes";
+            bt_cad()
+        }
     </script>
 
 </head>
@@ -35,7 +49,7 @@
                 <a class="menu_link" href="/user">Area do aluno</a>
             </nav>
         </header>
-        <div id="destaque">
+        <div id="destaque">  
         <section id="menu">
             <button id='btlog'onclick= "bt_log()">Login</button>
             <button id='btcad'onclick= "bt_cad()">Cadastro</button>
@@ -47,36 +61,37 @@
             <input class="input" type="text" name="login">
             <h3>Senha</h3>
             <input class="input" type="password" name="senha">
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-            <p id="error">
-              {{ messages[0] }}
-            </p>
-            {% endif %}
-            {% endwith %}
+            <p id="error"></p>
             <br>
-            <button class="button" type="submit">Confirm</button>
+            <button class="button">Confirm</button>
             </form>
         </section>
         <section class="login" id="cad">
-            <form action="{{url_for('cad')}}" method="post">
+            <form action="{{url_for('validacion')}}" method="post">
                 <h2>Novo Cadastro</h2>
-                <p>Login</p>
-                <input type="text" name="login" class="input">
+                <p>User</p>
+                <input type="text" name="cad" class="input">
                 <p>Senha</p>
                 <input type="password" name="senha1" class="input">
-                <p>confirmar senha</p>
+                <p>Confirmar senha</p>
                 <input type="password" name="senha2" class="input">
-                {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                <p id="error">
-                 {{ messages[0] }}
-                </p>
-                {% endif %}
-                {% endwith %}
+                <p id="erro"></p>
                 <br>
-                <button type="submit" class="button">Confirm</button>
+                <button class="button">Confirm</button>
             </form>
+            {% with messages = get_flashed_messages() %}
+            {% for menssage in messages %}
+            {% if menssage == 'login_inexistente' %}
+            <script>login_inexistente()</script>
+            {% elif menssage == 'senha_incorreta' %}
+            <script>senha_incorreta()</script>
+            {% elif menssage == 'login_cadastrado' %}
+            <script>login_cadastrado()</script>
+            {% elif menssage == 'senhas_distintas' %}
+            <script>senhas_distintas()</script>
+            {% endif %}
+            {% endfor %}
+            {% endwith %}
         <section>
         </div>
 

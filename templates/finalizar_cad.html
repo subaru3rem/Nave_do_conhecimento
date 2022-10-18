@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style/finalizar_cad.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='imagens/Logo-Nave-titulo.png')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header class="menu">
+        <a class="menu_link" class="item_menu" href="/">Nave do Conhecimento</a>
+        <nav class="item_menu">
+            <a class="menu_link" href="https://capacitacao.navedoconhecimento.rio/">Cursos</a>
+            <a class="menu_link" href="/eventos">Eventos</a>
+            <a class="menu_link" href="/unidades">Unidades</a>
+            <a class="menu_link" href="/user">Area do aluno</a>
+        </nav>
+    </header>
+    <div id="destaque">
+    <section class="login">
+        <form action="{{url_for('finalizar_cad')}}" method="post">
+            <div><input type="file"></div>
+            <div id="class">
+            <h2>Novo Cadastro</h2>
+            <p>User</p>
+            <input type="text" name="cad" class="input">
+            <p>Senha</p>
+            <input type="password" name="senha1" class="input">
+            <p>Confirmar senha</p>
+            <input type="password" name="senha2" class="input">
+            <p id="erro"></p>
+            <br>
+            <button class="button">Confirm</button>
+            </div>
+        </form>
+    </section>
+    </div>
+</body>
+</html>

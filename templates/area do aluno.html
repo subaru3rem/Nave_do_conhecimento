@@ -7,6 +7,22 @@
     <link rel="icon" href="{{url_for('static', filename='imagens/Logo-Nave-titulo.png')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
+        function menssage(menssage){
+            if (menssage == 'senhas_distintas'){
+                document.getElementById("erro").innerHTML = "As senhas não são correspondentes";
+                bt_cad()
+            }
+            else if (menssage == 'login_cadastrado'){
+                document.getElementById("erro").innerHTML = "Login ja cadastrado";
+                bt_cad()
+            }
+            else if (menssage == 'login_inexistente'){
+                document.getElementById("error").innerHTML = "Login não cadastrado";
+            }
+            else if (menssage == 'senha_incorreta'){
+                document.getElementById("error").innerHTML = "Senha incorreta";
+            }
+        }
         function bt_log() {
             document.getElementById('cad').style.display = 'none';
             document.getElementById('log').style.display = 'block';
@@ -20,21 +36,7 @@
             document.getElementById('btlog').style.boxShadow = 'inset 0px 0px 25px rgba(0, 0, 0, 0.5)';
             document.getElementById('btcad').style.boxShadow = 'none';
             document.getElementById('btlog').style.borderRadius = '20px 0px 0px 0px';
-        }
-        function login_inexistente() {
-            document.getElementById("error").innerHTML = "Login não cadastrado";
-        }
-        function senha_incorreta() {
-            document.getElementById("error").innerHTML = "Senha incorreta";
-        }
-        function login_cadastrado() {
-            document.getElementById("erro").innerHTML = "Login ja cadastrado";
-            bt_cad()
-        }
-        function senhas_distintas() {
-            document.getElementById("erro").innerHTML = "As senhas não são correspondentes";
-            bt_cad()
-        }
+        }   
     </script>
 
 </head>
@@ -81,15 +83,7 @@
             </form>
             {% with messages = get_flashed_messages() %}
             {% for menssage in messages %}
-            {% if menssage == 'login_inexistente' %}
-            <script>login_inexistente()</script>
-            {% elif menssage == 'senha_incorreta' %}
-            <script>senha_incorreta()</script>
-            {% elif menssage == 'login_cadastrado' %}
-            <script>login_cadastrado()</script>
-            {% elif menssage == 'senhas_distintas' %}
-            <script>senhas_distintas()</script>
-            {% endif %}
+            <script>menssage('{{menssage}}')</script>
             {% endfor %}
             {% endwith %}
         <section>

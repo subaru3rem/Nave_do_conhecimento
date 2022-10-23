@@ -43,9 +43,11 @@
             </div>
             <div>
             <p>CPF</p>
-            <input type="number" name="cpf" class="input">
+            <input type="text" name="cpf" \
+			pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" \
+			title="Digite um CPF no formato: xxx.xxx.xxx-xx" class="input">
             <p>Celular</p>
-            <input type="number" name="celular" class="input">
+            <input type="text" pattern="[0-9]{12}" title="Digite um numero de telefone com 12 digitos"  name="celular" class="input">
             <p>UF</p>
             <input type="text" name="uf" class="input">
             <p>Cidade</p>

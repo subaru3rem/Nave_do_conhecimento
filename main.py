@@ -27,12 +27,19 @@ def user():
     return render_template("area do aluno.html")
 def Login(login):
     return render_template("log_user.html", account=login)
-@app.route("/user/j")
-def cad():
-    return render_template("finalizar_cad.html")
-@app.route("/user/j", methods = ["GET", "POST"])
+@app.route("/user/#")
+def Cad(cad, cad_senha):
+    return render_template("finalizar_cad.html", login=cad, senha=cad_senha)
+@app.route("/user/#", methods = ["GET", "POST"])
 def finalizar_cad():
-    pass
+    login, senha, nome, nome_s = request.form.get("user"),request.form.get("user_senha"),request.form.get("nome"), request.form.get("nome_s")
+    sexo, email, data_n, cpf = request.form.get("sexo"), request.form.get("email"), request.form.get("data_n"), request.form.get("cpf")
+    cell, uf, cidade, cor = request.form.get("celular"), request.form.get("uf"), request.form.get("cidade"), request.form.get("cor")
+    cursor.execute(f"""insert into usuarios values('{login}', '{senha}');""")
+    cursor.execute(f'''insert into info_user values('{login}', '{nome}', '{nome_s}', '{sexo}', '{email}', '{data_n}'
+    , '{cpf}', '{cell}', '{uf}', '{cidade}', '{cor}')''')
+    mydb.commit()
+    return Login(login)
 @app.route('/user', methods =["GET", "POST"])
 def validacion():
     if request.method == "POST":
@@ -50,9 +57,7 @@ def validacion():
                 verificação = cursor.fetchone()
                 if verificação == None:
                     if cad_senha == confirmação:
-                        cursor.execute(f"insert into usuarios values ('{cad}', '{cad_senha}')")
-                        mydb.commit()
-                        return cad()
+                        return Cad(cad, cad_senha)
                     else: 
                         flash("senhas_distintas")
                         return user()

@@ -1,0 +1,80 @@
+:root{
+  --TextoPrincipal: white;
+  --cor_primaria: #34495e;
+  --cor_secundaria: #03dac6;
+  --cor_terciaria: rgba(142, 142, 143, 0.349);
+
+}
+body{
+  background-image:url(sky.jpg);
+  margin: auto;
+}
+.menu{
+  display: flex;
+  justify-content: space-between;
+  background-color:var(--cor_primaria);
+  font-family:'Times New Roman', Times, serif;
+}
+.item_menu{
+  margin: 0%;
+  display: flex;
+}
+.menu_link{
+padding: 20px;
+border: none;
+color: var(--TextoPrincipal);
+font-size: 120%;
+background-color: var(--cor_primaria);
+}
+.menu_link:hover{
+padding:20px;
+border: none;
+background-color: var(--cor_secundaria);
+color: navy;
+text-decoration: none;
+}
+.item_unidade{
+  display: flex;
+  justify-content: start;
+  text-align: justify;
+  box-shadow:0px 0px 25px rgba(0, 0, 0, 1);
+  margin: 0% 10%;
+  border-radius: 15px;
+  color: var(--TextoPrincipal);
+  margin: 50px 10px;
+}
+.img_unidade{
+  width: auto;
+  height: auto;
+  border-radius: 6px;
+  margin: 1% 3%;
+}
+footer{
+  box-shadow:0px 0px 25px rgba(0, 0, 0, 1);
+  margin: none;
+  padding: 10px 0px 3px 0px;
+  text-align: center;
+  border-radius: 5px 5px 0px 0px;
+  color: var(--TextoPrincipal);
+}
+a:link{
+  color: var(--TextoPrincipal);
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: underline;
+}
+a:visited{
+  color: var(--TextoPrincipal);
+}
+@media only screen and (max-width: 900px){
+  .item_unidade{display: block;
+    text-align: center;
+    padding-bottom: 3%;}
+  .img_unidade{
+    margin: 3% 1%;
+    height: auto;
+    width: 80%;
+  }
+
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Nave do conhecimento</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style/style_home.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='imagens/Logo-Nave-titulo.png')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+        <header class="menu">
+            <a class="menu_link" class="item_menu" href="/">Nave do Conhecimento</a>
+            <nav class="item_menu">
+                <a class="menu_link" href="https://capacitacao.navedoconhecimento.rio/">Cursos</a>
+                <a class="menu_link" href="/eventos">Eventos</a>
+                <a class="menu_link" href="/unidades">Unidades</a>
+                <a class="menu_link" href="/user">Area do aluno</a>
+            </nav>
+        </header>
+
+        <section class="destaque">
+          <img class="img_destaque" src="{{url_for('static', filename='imagens/Logo-Nave-azul.png')}}" alt="">
+          <div class="texto_d">
+               <h1>Nave do conhecimento</h1>
+               <h3>o que somos...</h3>
+               <p id="paragrafo_d">
+                As Naves do Conhecimento democratizam o acesso ao universo digital em
+                ambientes colaborativos e criativos. Oferecem oficinas, cursos e eventos
+                relacionados à Informática Básica, Economia Criativa, Tecnologias da
+                Informação, Robótica e Programação, Trabalho e Empreendedorismo.
+                <br><br>
+                São nove unidades, localizadas nas zonas Norte e Oeste do Rio de Janeiro:
+                Engenho de Dentro, Irajá, Madureira, Nova Brasília, Padre Miguel, Penha, Santa Cruz,
+                Triagem e Vila Aliança.
+               </p>
+          </div>
+        </section>
+
+        <section class="cor_fundo">
+        <div class="fundo_cursos">
+            <h2>Principais Cursos</h2>
+            <div class="cursos">
+                <p class="curso_item">
+                  <a href="#"><img src="{{url_for('static', filename='imagens/html e css.jpg')}}" width="90%" height="90%"></a>
+                    <br>
+                    <a href="#">Front end</a>
+                </p>
+                <p class="curso_item">
+                    <a href="#"><img src="{{url_for('static', filename='imagens/python.jpg')}}"" width="90%" height="90%"></a>
+                    <br>
+                    <a href="#">Python</a>
+                </p>
+                <p class="curso_item">
+                  <a href="#"><img src="{{url_for('static', filename='imagens/rede.jpg')}}" width="90%" height="90%"></a>
+                    <br>
+                    <a href="#">CCNA</a>
+                </p>
+                <p class="curso_item">
+                  <a href="#"><img src="{{url_for('static', filename='imagens/it imagem.jpg')}}" width="90%" height="90%"></a>
+                    <br>
+                    <a href="#">It Essentials</a>
+                </p>
+            </div>
+        </div>
+        </section>
+        <footer>
+            <p>Nave do conhecimento<br>Prefeitura do Rio de Janeiro</p>
+        </footer>
+</body>
+</html>

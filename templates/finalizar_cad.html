@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Cadastro</title>
@@ -20,19 +20,48 @@
     <div id="destaque">
     <section class="login">
         <form action="{{url_for('finalizar_cad')}}" method="post">
-            <div><input type="file"></div>
-            <div id="class">
-            <h2>Novo Cadastro</h2>
-            <p>User</p>
-            <input type="text" name="cad" class="input">
-            <p>Senha</p>
-            <input type="password" name="senha1" class="input">
-            <p>Confirmar senha</p>
-            <input type="password" name="senha2" class="input">
-            <p id="erro"></p>
-            <br>
-            <button class="button">Confirm</button>
+            <h2>Finalizar cadastro</h2>
+            <div class="login_og">
+            <div>
+            <p>Nome Completo</p>
+            <input type="text" name="nome" class="input">
+            <p>Nome Social</p>
+            <input type="text" name="nome_s" class="input">
+            <p>Email</p>
+            <input type="email" name="email" class="input">
+            <p>Data de Nascimento</p>
+            <input type="date" name="data_n" class="input" id="date">
+            <p>Sexo</p>
+            <input type="radio" name="sexo" value="masculino">
+            <label>Masculino</label>
+            <input type="radio" name="sexo" value="feminino">
+            <label>Feminino</label>
+            <input type="radio" name="sexo" value="indefinido">
+            <label>Indefinido</label>
+            <input type="hidden" name="user" value={{login}}>
             </div>
+            <div>
+            <p>CPF</p>
+            <input type="number" name="cpf" class="input">
+            <p>Celular</p>
+            <input type="number" name="celular" class="input">
+            <p>UF</p>
+            <input type="text" name="uf" class="input">
+            <p>Cidade</p>
+            <input type="text" name="cidade" class="input">
+            <p>Cor/Etina</p>
+            <input type="radio" name="Cor" value="preta">
+            <label>Preta</label>
+            <input type="radio" name="Cor" value="branca">
+            <label>Branca</label>
+            <input type="radio" name="Cor" value="indigina">
+            <label>Indigina</label>
+            <input type="radio" name="Cor" value="indefinido">
+            <label>Indefinido</label>
+            </div>
+            </div>
+            <p id="erro"></p>
+            <button class="button">Confirmar</button>
         </form>
     </section>
     </div>

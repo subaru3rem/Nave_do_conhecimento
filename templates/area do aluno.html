@@ -51,12 +51,12 @@
                 <a class="menu_link" href="/user">Area do aluno</a>
             </nav>
         </header>
-        <div id="destaque">  
-        <section id="menu">
+        <section id="destaque">  
+        <div id="menu">
             <button id='btlog'onclick= "bt_log()">Login</button>
             <button id='btcad'onclick= "bt_cad()">Cadastro</button>
-        </section>
-        <section class="login" id="log">
+        </div>
+        <div class="login" id="log">
             <form action="{{url_for('validacion')}}" method="post">
             <h2>Login</h2>
             <h3>User</h3> 
@@ -67,8 +67,8 @@
             <br>
             <button class="button">Confirm</button>
             </form>
-        </section>
-        <section class="login" id="cad">
+        </div>
+        <div class="login" id="cad">
             <form action="{{url_for('validacion')}}" method="post">
                 <h2>Novo Cadastro</h2>
                 <p>User</p>
@@ -82,13 +82,9 @@
                 <button class="button">Confirm</button>
             </form>
             {% with messages = get_flashed_messages() %}
-            {% for menssage in messages %}
-            <script>menssage('{{menssage}}')</script>
-            {% endfor %}
+            <script>menssage('{{messages[0]}}')</script>
             {% endwith %}
-        <section>
         </div>
-
         </section>
     </div>
     <footer>

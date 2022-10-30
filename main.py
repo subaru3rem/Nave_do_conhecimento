@@ -96,4 +96,4 @@ def validacion():
             else:
                 flash('senha_incorreta')
                 return user()
-app.run(debug=True)
+app.run(host = '0.0.0.0', debug=True)

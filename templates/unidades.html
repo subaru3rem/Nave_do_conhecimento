@@ -6,7 +6,16 @@
     <link rel="stylesheet" href="{{url_for('static', filename='style/style_unidades.css')}}">
     <link rel="icon" href="{{url_for('static', filename='imagens/Logo-Nave-titulo.png')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script>
+        function bt_responsive(){
+            if (document.getElementById('responsive_menu').style.display == 'block'){
+                document.getElementById('responsive_menu').style.display = 'none';
+            }
+            else{
+                document.getElementById('responsive_menu').style.display = 'block';
+            }
+        }
+    </script>
 </head>
 <body>
     <header class="menu">
@@ -19,9 +28,26 @@
             </nav>
         </nav>
     </header>
+    <header class="responsive">
+        <div class="menu_responsive">
+            <p class="item_responsive">Nave do Conhecimento</p>
+            <div class="aling_hamburger">
+            <input class="checkbox" type="button" onclick="bt_responsive()" name="" id="" />
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            </div>  
         </div>
+        <nav id="responsive_menu">
+                <a class="menu_link" href="/">Inicio</a>
+                <a class="menu_link" href="https://capacitacao.navedoconhecimento.rio/">Cursos</a>
+                <a class="menu_link" href="/eventos">Eventos</a>
+                <a class="menu_link" href="/unidades">Unidades</a>
+                <a class="menu_link" href="/user">Area do aluno</a>
+        </nav>
     </header>
-
     <section class="item_unidade">
         <img class="img_unidade" src="{{url_for('static', filename='imagens/nave-ol.jpg')}}">
         <div>

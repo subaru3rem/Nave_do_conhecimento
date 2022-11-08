@@ -6,16 +6,6 @@
     <link rel="stylesheet" href="{{url_for('static', filename='style/style_user.css')}}">
     <link rel="icon" href="{{url_for('static', filename='imagens/Logo-Nave-titulo.png')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
-        function bt_responsive(){
-            if (document.getElementById('responsive_menu').style.display == 'block'){
-                document.getElementById('responsive_menu').style.display = 'none';
-            }
-            else{
-                document.getElementById('responsive_menu').style.display = 'block';
-            }
-        }
-    </script>
 </head>
 <body>
     <div>
@@ -48,20 +38,26 @@
                     <a class="menu_link" href="/user">Area do aluno</a>
             </nav>
         </header>
-        <section id="aluno">
-            <div id="apresentação">
-                <h2>Bem-vindo {{account}}</h2>
-                <img src="https://pps.whatsapp.net/v/t61.24694-24/231627847_5572191659558527_451333940719747452_n.jpg?ccb=11-4&oh=01_AVzmMmjcegUQMbuvW2GrizDCUhBr0fMcF2sOv3QaJ7L9zw&oe=6348795A" alt="" width="20%" height="auto">
+        <section class="destaque">
+            <div class="apresentação">
+                <h2>Bem-vindo<br>{{account.capitalize()}}</h2>
+                <img id="img_destaque" src="{{url_for('static', filename='imagens/defaut user.png')}}" alt="">
+                <div>
+                <form id="form" action="{{url_for('img')}}" method="post" enctype="multipart/form-data">
+                    <input type="file" id="input_img" name="input_img">
+                    <input type="hidden" id='login' name="login" value="{{account}}">
+                    <label for="input_img">Trocar imagem de Perfil</label>
+                    <input type="submit" id="submit">
+                </form>
+                <label for="submit" id="label_submit">Enviar</label>
+                </div>
             </div>
-            <div id="menu_login">
-            <button>Meus Cursos</button>
-            <button>Acesse o Moodle</button>
-            <button>Editar Perfil</button>
-            </div>
-            <div id="cursos">
-                <button>Cursos Pendentes</button>
-                <button>Cursos em Andamento</button>
-                <Button>Cursos Concluidos</Button>
+            <div class="menus">
+             <div class="menu_user">
+                <button id="bt_cursos">Meus Cursos</button>
+                <a id="bt_moodle" href="https://moodle.navedoconhecimento.rio/">Acesse o Moodle</a>
+                <button id="bt_edit_perfil">Editar Perfil</button>
+             </div>
             </div>
             
         </section>
@@ -69,5 +65,28 @@
     <footer>
         <p>Nave do conhecimento<br><br>Prefeitura do Rio de Janeiro</p>
     </footer>
+    <script>
+        function bt_responsive(){
+            if (document.getElementById('responsive_menu').style.display == 'block'){
+                document.getElementById('responsive_menu').style.display = 'none';
+            }
+            else{
+                document.getElementById('responsive_menu').style.display = 'block';
+            }
+        }
+        function img_apresentacao(){
+            if (this.files && this.files[0]) {
+            var file = new FileReader();
+            file.onload = function(e) {
+            document.getElementById("img_destaque").src = e.target.result;
+        };       
+        file.readAsDataURL(this.files[0]);
+        }
+        }
+        function submit(){
+
+        }
+        document.getElementById("input_img").addEventListener("change", img_apresentacao, false);
+    </script>
 </body>
 </html>

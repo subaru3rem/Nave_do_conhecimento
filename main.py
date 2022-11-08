@@ -4,6 +4,7 @@ from nturl2path import pathname2url
 from flask import *
 import mysql.connector
 import re
+import os
 
 mydb = mysql.connector.connect(
     host='localhost',
@@ -14,6 +15,7 @@ mydb = mysql.connector.connect(
 cursor = mydb.cursor()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret-key-goes-here'
+app.config['UPLOAD_FOLDER'] = '/uploads'
 @app.route('/')
 def home():
     return render_template("home.html")
@@ -26,9 +28,16 @@ def eventos():
 @app.route("/user")
 def user():
     return render_template("area do aluno.html")
+@app.route("/user/img", methods= ['GET', 'POST'])
+def img():
+    login = request.form.get("login")
+    arquivos = request.files['input_img']
+    arquivos.save(f'uploads/{arquivos.filename}')
+    return Login(login)
+@app.route("/user/<login>")
 def Login(login):
     return render_template("log_user.html", account=login)
-@app.route("/user/#")
+@app.route("/user/#", methods= ['GET', 'POST'])
 def Cad(cad, cad_senha):
     return render_template("finalizar_cad.html", login=cad, senha=cad_senha)
 def sanitize(dict):
@@ -51,8 +60,8 @@ def sanitize(dict):
 def finalizar_cad():
     login, senha, nome, nome_s = request.form.get("user"),request.form.get("user_senha"),request.form.get("nome"), request.form.get("nome_s")
     sexo, email, data_n, cpf = request.form.get("sexo"), request.form.get("email"), request.form.get("data_n"), request.form.get("cpf")
-    cell, uf, cidade, cor = request.form.get("celular"), request.form.get("uf"), request.form.get("cidade"), request.form.get("cor")
-    itens = {'login':login, 'senha':senha, 'nome':nome, 'nome_s':nome_s, 'sexo':sexo, 'email':email, 'data_n': data_n, 'cpf':cpf, 'cell': cell, 'uf':uf, 'cidade':cidade, 'cor': cor}
+    cell, uf, municipio, cor = request.form.get("celular"), request.form.get("uf"), request.form.get("municipio"), request.form.get("cor")
+    itens = {'login':login, 'senha':senha, 'nome':nome, 'nome_s':nome_s, 'sexo':sexo, 'email':email, 'data_n': data_n, 'cpf':cpf, 'cell': cell, 'uf':uf, 'municipio':municipio, 'cor': cor}
     clean = []
     for i in itens.items():clean.append(sanitize(i))
     cursor.execute(f"""insert into usuarios values('{clean[0]}', '{clean[1]}');""")

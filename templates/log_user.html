@@ -40,17 +40,17 @@
         </header>
         <section class="destaque">
             <div class="apresentação">
+                <div id="div_ap">
                 <h2>Bem-vindo<br>{{account.capitalize()}}</h2>
                 <img id="img_destaque" src="{{url_for('static', filename='imagens/defaut user.png')}}" alt="">
-                <div>
                 <form id="form" action="{{url_for('img')}}" method="post" enctype="multipart/form-data">
                     <input type="file" id="input_img" name="input_img">
                     <input type="hidden" id='login' name="login" value="{{account}}">
                     <label for="input_img">Trocar imagem de Perfil</label>
                     <input type="submit" id="submit">
                 </form>
-                <label for="submit" id="label_submit">Enviar</label>
                 </div>
+            <label for="submit" id="label_submit">Enviar</label>
             </div>
             <div class="menus">
              <div class="menu_user">
@@ -79,6 +79,9 @@
             var file = new FileReader();
             file.onload = function(e) {
             document.getElementById("img_destaque").src = e.target.result;
+            document.getElementById("label_submit").style.display = "block";
+            document.getElementById("div_ap").style.margin = '0';
+            document.getElementById("div_ap").style.marginLeft = 'auto'
         };       
         file.readAsDataURL(this.files[0]);
         }

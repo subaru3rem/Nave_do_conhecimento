@@ -82,37 +82,44 @@ a:visited{
 }
 .apresentação{
   display: flex;
-  flex-direction: column;
   align-items: center;
   text-align: center;
   color: var(--TextoPrincipal);
   width: 50%;
 }
 .apresentação img{
-  border-radius: 20px 20px 0px 0px;
+  border-radius: 20px;
   height: 40%;
-  width: 40%;
-  margin-top: 3%;
-  padding: 1% 2%;
+  width: 100%;
+  margin: 3% 0;
+}
+#div_ap{
+  width: 43%;
+  margin: auto;
 }
 .apresentação form{
-  width: 40%;
+  width: 100%;
 }
 .apresentação input[type="file"], input[type='submit'] {
   display: none;
-}
-.apresentação div{
-  display: flex;
 }
 .apresentação label{
   background-color: var(--cor_primaria);
   width: 100%;
   color: var(--TextoPrincipal);
-  border-radius: 0px 0px 20px 20px;
+  border-radius: 20px;
   display: block;
   padding: 7% 0px;
 }
-
+#label_submit{
+  display: none;
+  width: 21%;
+  padding: 10px 0;
+  margin-right: 10%;
+  align-self: flex-end;
+  margin-bottom: 53%;
+  margin-left: 10px;
+}
 .apresentação button{
   width: 10%;
   height: 5%;

@@ -30,10 +30,15 @@ def user():
     return render_template("area do aluno.html")
 @app.route("/user/img", methods= ['GET', 'POST'])
 def img():
-    login = request.form.get("login")
-    arquivos = request.files['input_img']
-    arquivos.save(f'uploads/{arquivos.filename}')
-    return Login(login)
+    if request.method == "POST":
+        login = request.form.get("login")
+        arquivos = request.files['input_img']
+        arquivos.save(f'uploads/{arquivos.filename}')
+        return Login(login)
+    else:
+        list = {'nome':'cainã', 'idade':17, 'estado':'RJ'}
+        return list
+
 @app.route("/user/<login>")
 def Login(login):
     return render_template("log_user.html", account=login)

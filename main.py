@@ -31,10 +31,10 @@ def user():
 @app.route("/user/img", methods= ['GET', 'POST'])
 def img():
     if request.method == "POST":
-        login = request.form.get("login")
-        arquivos = request.files['input_img']
-        arquivos.save(f'uploads/{arquivos.filename}')
-        return Login(login)
+        arquivos= request.data
+        print(arquivos)
+        #arquivos.save(f'uploads/{arquivos.filename}')#
+        return ['Sucesss']
     else:
         list = {'nome':'cainã', 'idade':17, 'estado':'RJ'}
         return list

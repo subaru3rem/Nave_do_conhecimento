@@ -15,7 +15,6 @@ mydb = mysql.connector.connect(
 cursor = mydb.cursor()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret-key-goes-here'
-app.config['UPLOAD_FOLDER'] = '/uploads'
 @app.route('/')
 def home():
     return render_template("home.html")
@@ -27,22 +26,31 @@ def eventos():
     return render_template("eventos.html")
 @app.route("/user")
 def user():
-    return render_template("area do aluno.html")
+    cookie = request.cookies.get('login')
+    cursor.execute(f"select login, img from info_user where login='{cookie}'")
+    login = cursor.fetchone()
+    if login:
+        return render_template("log_user.html", account=login[0], img=login[1])
+    else:
+        return render_template("area do aluno.html")
 @app.route("/user/img", methods= ['GET', 'POST'])
 def img():
     if request.method == "POST":
-        arquivos= request.data
-        print(arquivos)
-        #arquivos.save(f'uploads/{arquivos.filename}')#
-        return ['Sucesss']
+        login = request.form.get("login")
+        arquivos = request.files['input_img']
+        arquivos.save(f'static/uploads/img_perfil_{login}.jpg')
+        cursor.execute(f"update info_user set img = 'img_perfil_{login}' where login = '{login}'")
+        mydb.commit()
+        return [200]
     else:
-        list = {'nome':'cainã', 'idade':17, 'estado':'RJ'}
-        return list
-
-@app.route("/user/<login>")
+        return ['fds']
+@app.route("/user")
 def Login(login):
-    return render_template("log_user.html", account=login)
-@app.route("/user/#", methods= ['GET', 'POST'])
+    cursor.execute(f"select img from info_user where login='{login}'")
+    img = cursor.fetchone()
+    res = make_response(render_template("log_user.html", account=login, img = img[0]))
+    res.set_cookie("login", login)
+    return res
 def Cad(cad, cad_senha):
     return render_template("finalizar_cad.html", login=cad, senha=cad_senha)
 def sanitize(dict):
@@ -61,7 +69,7 @@ def sanitize(dict):
     else:
         string = re.sub("[^\w ]", "", string)
         return string
-@app.route("/user/#", methods = ["GET", "POST"])
+@app.route("/user/#", methods = ["POST"])
 def finalizar_cad():
     login, senha, nome, nome_s = request.form.get("user"),request.form.get("user_senha"),request.form.get("nome"), request.form.get("nome_s")
     sexo, email, data_n, cpf = request.form.get("sexo"), request.form.get("email"), request.form.get("data_n"), request.form.get("cpf")
@@ -71,43 +79,42 @@ def finalizar_cad():
     for i in itens.items():clean.append(sanitize(i))
     cursor.execute(f"""insert into usuarios values('{clean[0]}', '{clean[1]}');""")
     cursor.execute(f'''insert into info_user values('{clean[0]}', '{clean[2]}', '{clean[3]}', '{clean[4]}', '{clean[5]}', '{clean[6]}'
-    , '{clean[7]}', '{clean[8]}', '{clean[9]}', '{clean[10]}', '{clean[11]}')''')
+    , '{clean[7]}', '{clean[8]}', '{clean[9]}', '{clean[10]}', '{clean[11]}', 'defaut_user')''')
     mydb.commit()
     return Login(login)
-@app.route('/user', methods =["GET", "POST"])
+@app.route('/user', methods =["POST"])
 def validacion():
-    if request.method == "POST":
-        login = request.form.get("login")
-        senha = request.form.get("senha")
-        cad = request.form.get("cad")
-        cad_senha = request.form.get("senha1")
-        confirmação = request.form.get("senha2")
-        if login == None:
-            if cad == '':
-                return user()
-            else:
-                sql = f"select login from usuarios where login='{cad}'"
-                cursor.execute(sql)
-                verificação = cursor.fetchone()
-                if verificação == None:
-                    if cad_senha == confirmação:
-                        return Cad(cad, cad_senha)
-                    else: 
-                        flash("senhas_distintas")
-                        return user()
-                else:
-                    flash('login_cadastrado')
-                    return user()
+    login = request.form.get("login")
+    senha = request.form.get("senha")
+    cad = request.form.get("cad")
+    cad_senha = request.form.get("senha1")
+    confirmação = request.form.get("senha2")
+    if login == None:
+        if cad == '':
+            return user()
         else:
-            sql = f"select senha from usuarios where login='{login}'"
+            sql = f"select login from usuarios where login='{cad}'"
             cursor.execute(sql)
             verificação = cursor.fetchone()
             if verificação == None:
-                flash('login_inexistente')
-                return user()
-            elif verificação[0] == senha:
-                return Login(login)
+                if cad_senha == confirmação:
+                    return Cad(cad, cad_senha)
+                else: 
+                    flash("senhas_distintas")
+                    return user()
             else:
-                flash('senha_incorreta')
+                flash('login_cadastrado')
                 return user()
+    else:
+        sql = f"select senha from usuarios where login='{login}'"
+        cursor.execute(sql)
+        verificação = cursor.fetchone()
+        if verificação == None:
+            flash('login_inexistente')
+            return user()
+        elif verificação[0] == senha:
+            return Login(login)
+        else:
+            flash('senha_incorreta')
+            return user()
 app.run(host = '0.0.0.0', debug=True)

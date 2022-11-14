@@ -3,7 +3,9 @@
   --cor_primaria: #34495e;
   --cor_secundaria: #03dac6;
   --cor_terciaria: rgba(142, 142, 143, 0.349);
-
+}
+*{
+  color: var(--TextoPrincipal);
 }
 html {
   height: 100%;
@@ -17,6 +19,7 @@ body{
   min-height: 100%;
 }
 .menu{
+  align-items: start;
   display: flex;
   justify-content: space-between;
   background-color:var(--cor_primaria);
@@ -75,7 +78,7 @@ a:visited{
 .destaque{
   height: 100%;
   width: 80%;
-  margin: 5% 10%;
+  margin: 5% 10% 0 10%;
   box-shadow:0px 0px 25px rgba(0, 0, 0, 1);
   border-radius: 20px;
   display: flex;
@@ -100,7 +103,7 @@ a:visited{
 .apresentação form{
   width: 100%;
 }
-.apresentação input[type="file"], input[type='submit'] {
+.apresentação input[type="file"]{
   display: none;
 }
 .apresentação label{
@@ -111,18 +114,14 @@ a:visited{
   display: block;
   padding: 7% 0px;
 }
-#label_submit{
+#submit{
   display: none;
-  width: 21%;
-  padding: 10px 0;
+  width: 15%;
   margin-right: 10%;
   align-self: flex-end;
-  margin-bottom: 53%;
-  margin-left: 10px;
-}
-.apresentação button{
-  width: 10%;
-  height: 5%;
+  margin-bottom: 50%;
+  margin-left: -80px;
+  border: none;
 }
 .menus{
   height: 100%;
@@ -135,7 +134,7 @@ a:visited{
   display: flex;
   flex-direction: column;
 }
-.menu_user a,button{
+.menu_user a, .menu_user button{
   padding: 10% 0%;
   background-color: var(--cor_primaria);
   margin: none;
@@ -157,8 +156,20 @@ a:visited{
 .cursos{
   display: none;
 }
+.logout{
+  margin: 2% 37%;
+  padding: 0.8% 10%;
+  border-radius: 20px;
+  background-color: var(--cor_primaria);
+  border: none;
+  box-shadow:0px 0px 25px rgba(0, 0, 0, 1);
+  font-size: 110%;
+}
+.logout:hover{
+  background-color: red;
+}
 
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 720px){
   .menu{
     display: none;
   }
@@ -242,5 +253,26 @@ a:visited{
   }
   .login_og{
     display: block;
+  }
+  .destaque{
+    display: block;
+  }
+  .apresentação{
+    width: 100%;
+  }
+  .menus{
+    width: 100%;
+  }
+  .menu_user{
+    flex-direction: row;
+  }
+  .menu_user a, .menu_user button{
+    width: 35%;
+  }
+  #bt_cursos {
+    border-radius: 0px 0px 0px 20px;
+  }
+  .apresentação label{
+    margin: 20px 0;
   }
 }

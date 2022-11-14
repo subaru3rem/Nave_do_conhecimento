@@ -42,15 +42,14 @@
             <div class="apresentação">
                 <div id="div_ap">
                 <h2>Bem-vindo<br>{{account.capitalize()}}</h2>
-                <img id="img_destaque" src="{{url_for('static', filename='imagens/defaut user.png')}}" alt="">
-                <form id="form" action="{{url_for('img')}}" method="post" enctype="multipart/form-data">
+                <img id="img_destaque" src="static/uploads/{{img}}.jpg" alt="">
+                <form id="form" action='' method="post" enctype="multipart/form-data">
                     <input type="file" id="input_img" name="input_img">
                     <input type="hidden" id='login' name="login" value="{{account}}">
                     <label for="input_img">Trocar imagem de Perfil</label>
-                    <input type="submit" id="submit">
                 </form>
                 </div>
-            <label for="submit" id="label_submit">Enviar</label>
+                <a onclick="submit()" id="submit" ><img  src="static/imagens/accept.png" alt=""></a>
             </div>
             <div class="menus">
              <div class="menu_user">
@@ -59,8 +58,8 @@
                 <button id="bt_edit_perfil">Editar Perfil</button>
              </div>
             </div>
-            
         </section>
+        <button class="logout" onclick="logout()">Logout</button>
     </div>
     <footer>
         <p>Nave do conhecimento<br><br>Prefeitura do Rio de Janeiro</p>
@@ -79,15 +78,22 @@
             var file = new FileReader();
             file.onload = function(e) {
             document.getElementById("img_destaque").src = e.target.result;
-            document.getElementById("label_submit").style.display = "block";
-            document.getElementById("div_ap").style.margin = '0';
-            document.getElementById("div_ap").style.marginLeft = 'auto'
+            document.getElementById("submit").style.display = "block";
         };       
         file.readAsDataURL(this.files[0]);
         }
         }
         function submit(){
-
+            const formElement = document.querySelector("form");
+            const formData = new FormData(formElement);
+            const request = new XMLHttpRequest();
+            request.open("POST", "/user/img");
+            request.send(formData)
+            document.getElementById("submit").style.display = "none";
+        }
+        function logout(){
+            document.cookie = "login=";
+            window.location.href = "/user" 
         }
         document.getElementById("input_img").addEventListener("change", img_apresentacao, false);
     </script>

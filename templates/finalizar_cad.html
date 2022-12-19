@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='style/finalizar_cad.css')}}">
-    <link rel="icon" href="{{url_for('static', filename='imagens/Logo-Nave-titulo.png')}}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
     <header class="menu">
         <a class="menu_link" class="item_menu" href="/">Nave do Conhecimento</a>
         <nav class="item_menu">
@@ -39,7 +29,7 @@
     </header>
     <div id="destaque">
     <section class="login">
-        <form action="{{url_for('finalizar_cad')}}" method="post">
+        <form method="post" id="finalizar_cad">
             <h2>Finalizar cadastro</h2>
             <div class="login_og">
             <div>
@@ -85,38 +75,11 @@
             <label>Indefinido</label>
             </div>
             </div>
-            <p id="erro"></p>
-            <button class="button">Confirmar</button>
+            <p id="erro"></p>    
         </form>
+        <button class="button" onclick="finalizar_cad()">Confirmar</button>
     </section>
     </div>
     <footer>
         <p>Nave do conhecimento<br><br>Prefeitura do Rio de Janeiro</p>
     </footer>
-    <script>
-        function bt_responsive(){
-            if (document.getElementById('responsive_menu').style.display == 'block'){
-                document.getElementById('responsive_menu').style.display = 'none';
-            }
-            else{
-                document.getElementById('responsive_menu').style.display = 'block';
-            }
-        }
-        function ufs(){
-            x = document.getElementById("ufs")
-            fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
-            .then(r =>  r.json())
-            .then(r => r.forEach(i => x.appendChild(new Option(i["sigla"]))))
-        }
-        function municipios(){
-            x=document.getElementById("uf")
-            y=document.getElementById("municipios")
-            fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${x.value}/municipios`)
-            .then(r =>  r.json())
-            .then(r => r.forEach(i => y.appendChild(new Option(i["nome"]))))
-        }
-        document.getElementById("uf").addEventListener("change", municipios, false);
-        ufs()
-    </script>
-</body>
-</html>

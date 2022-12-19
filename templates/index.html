@@ -6,16 +6,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='style/style_home.css')}}">
     <link rel="icon" href="{{url_for('static', filename='imagens/Logo-Nave-titulo.png')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
-        function bt_responsive(){
-            if (document.getElementById('responsive_menu').style.display == 'block'){
-                document.getElementById('responsive_menu').style.display = 'none';
-            }
-            else{
-                document.getElementById('responsive_menu').style.display = 'block';
-            }
-        }
-    </script>
+    <script src="{{url_for('static', filename='script.js')}}" async></script>
 </head>
 <body>
         <header class="menu">

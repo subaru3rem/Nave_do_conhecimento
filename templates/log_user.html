@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='style/style_user.css')}}">
     <link rel="icon" href="{{url_for('static', filename='imagens/Logo-Nave-titulo.png')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{{url_for('static', filename='script.js')}}" async></script>
 </head>
 <body>
     <div>
@@ -42,60 +43,142 @@
             <div class="apresentação">
                 <div id="div_ap">
                 <h2>Bem-vindo<br>{{account.capitalize()}}</h2>
-                <img id="img_destaque" src="static/uploads/{{img}}.jpg" alt="">
+                <img id="img_destaque" src="/static/uploads/{{img}}.jpg" alt="">
                 <form id="form" action='' method="post" enctype="multipart/form-data">
-                    <input type="file" id="input_img" name="input_img">
+                    <input type="file" id="input_img" name="input_img" onchange="img_apresentacao()">
                     <input type="hidden" id='login' name="login" value="{{account}}">
                     <label for="input_img">Trocar imagem de Perfil</label>
                 </form>
                 </div>
-                <a onclick="submit()" id="submit" ><img  src="static/imagens/accept.png" alt=""></a>
+                <a onclick="submit()" id="submit" >
+                    <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
+                    <lord-icon
+                    src="https://cdn.lordicon.com/yqzmiobz.json"
+                    trigger="hover"
+                    colors="primary:#34495e"
+                    state="hover"
+                    id="icon">
+                    </lord-icon>
+                </a>
             </div>
             <div class="menus">
              <div class="menu_user">
-                <button id="bt_cursos">Meus Cursos</button>
+                <button id="bt_cursos" onclick="cursos()">Meus Cursos</button>
                 <a id="bt_moodle" href="https://moodle.navedoconhecimento.rio/">Acesse o Moodle</a>
-                <button id="bt_edit_perfil">Editar Perfil</button>
+                <button id="bt_edit_perfil" onclick="edit_perfil()">Editar Perfil</button>
              </div>
             </div>
         </section>
         <button class="logout" onclick="logout()">Logout</button>
+        <section class="cursos">
+            <div>
+                <p>Cursos Concluidos</p>
+                <ul>
+                    <li>
+                        <p>Fotografia para produtos</p>
+                        <a href="static/certificados/fotografia.pdf" download>Certificado</a>
+                    </li>
+                    <li>
+                        <p>Retrato em Estúdio</p>
+                        <a href="static/certificados/retrato.pdf" download>Certificado</a>
+                    </li>                    
+                </ul>
+            </div>
+            <div>
+                <p>Cursos em Andamento</p>
+                <ul>
+                    <li>
+                        <p>Fundamentos da Fotografia</p>
+                        <p>Data de Conclusão: 11/11/2022</p>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <p>Cursos Pendentes</p>
+                <ul>
+                    <li>
+                        <p>CCNA 1</p>
+                        <p>Data de Início: 29/11/2022</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section>
+            <div class="edit_perfil">
+                <h2>Editar Login/senha</h2>
+                <form class="editar_perfil">
+                <div class="login_og" id="login_senha">
+                <div id="login_senha_text">
+                <p>Login</p>
+                <p>Senha atual</p>
+                <p>Nova senha</p>
+                <p>Confirmar senha</p>
+                </div>
+                <div id="login_senha_input">
+                <input type="text" name="login" class="input" value="{{account}}">
+                <input type="password" name="senha_antiga" class="input">
+                <input type="password" name="senha_nova" class="input">
+                <input type="password" name="senha_confirmação" class="input">
+                </div>
+                </div>
+                
+            </form>
+            <button class="button">Enviar</button>
+            </div>
+            <div class="edit_perfil">
+            <h2>Editar Informações</h2>
+            <form method="post" class="editar_perfil">
+                <div class="login_og">
+                <div>
+                <p>Nome Completo</p>
+                <input type="text" name="nome" class="input">
+                <p>Nome Social</p>
+                <input type="text" name="nome_s" class="input">
+                <p>Email</p>
+                <input type="email" name="email" class="input">
+                <p>Data de Nascimento</p>
+                <input type="date" name="data_n" class="input" id="date">
+                <p>Sexo</p>
+                <input type="radio" name="sexo" value="masculino">
+                <label>Masculino</label>
+                <input type="radio" name="sexo" value="feminino">
+                <label>Feminino</label>
+                <input type="radio" name="sexo" value="indefinido">
+                <label>Indefinido</label>
+                </div>
+                <div>
+                <p>CPF</p>
+                <input type="text" name="cpf" \
+                pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" \
+                title="Digite um CPF no formato: xxx.xxx.xxx-xx" class="input">
+                <p>Celular</p>
+                <input type="text" pattern="[0-9]{12}" title="Digite um numero de telefone com 12 digitos"  name="celular" class="input">
+                <p>UF</p>
+                <input list="ufs" name="uf" id="uf" class="input">
+                <datalist id="ufs"></datalist>
+                <p>Municipio</p>
+                <input list="municipios" name="municipio" class="input">
+                <datalist id="municipios"></datalist>
+                <p>Cor/Etina</p>
+                <input type="radio" name="cor" value="preta">
+                <label>Preta</label>
+                <input type="radio" name="cor" value="branca">
+                <label>Branca</label>
+                <input type="radio" name="cor" value="indigina">
+                <label>Indigina</label>
+                <input type="radio" name="cor" value="indefinido">
+                <label>Indefinido</label>
+                </div>
+                </div>
+                <p id="error_info"></p>    
+            </form>
+            <button class="button">Confirmar</button>
+            </div>
+        </section>
     </div>
     <footer>
         <p>Nave do conhecimento<br><br>Prefeitura do Rio de Janeiro</p>
     </footer>
-    <script>
-        function bt_responsive(){
-            if (document.getElementById('responsive_menu').style.display == 'block'){
-                document.getElementById('responsive_menu').style.display = 'none';
-            }
-            else{
-                document.getElementById('responsive_menu').style.display = 'block';
-            }
-        }
-        function img_apresentacao(){
-            if (this.files && this.files[0]) {
-            var file = new FileReader();
-            file.onload = function(e) {
-            document.getElementById("img_destaque").src = e.target.result;
-            document.getElementById("submit").style.display = "block";
-        };       
-        file.readAsDataURL(this.files[0]);
-        }
-        }
-        function submit(){
-            const formElement = document.querySelector("form");
-            const formData = new FormData(formElement);
-            const request = new XMLHttpRequest();
-            request.open("POST", "/user/img");
-            request.send(formData)
-            document.getElementById("submit").style.display = "none";
-        }
-        function logout(){
-            document.cookie = "login=";
-            window.location.href = "/user" 
-        }
-        document.getElementById("input_img").addEventListener("change", img_apresentacao, false);
-    </script>
+
 </body>
 </html>

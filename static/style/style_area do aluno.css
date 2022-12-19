@@ -68,19 +68,15 @@ body{
   box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.5);
   border-radius: 0px 20px 0px 0px
 }
-#cad{
+#cad_div{
   display: none;
 }
-
 .login{
-    text-align: center;
-    padding: 15px 0px 50px 0px;
-    font-size: 120%;
-    color: var(--TextoPrincipal);
-    border-radius: 0px 0px 20px 20px;
-}
-#log{
-  font-size: 150%;
+  text-align: center;
+  padding: 15px 0px 50px 0px;
+  font-size: 120%;
+  color: var(--TextoPrincipal);
+  border-radius: 0px 0px 20px 20px;
 }
 .button{
   padding: 1% 4%;
@@ -122,13 +118,9 @@ a:hover{
 a:visited{
     color: var(--TextoPrincipal);
   }
-#error{
-  color: red;
-  font-size: 90%;
-}
-#erro{
-  color: red;
-  font-size: 90%;
+#error_lg, #error_cad{
+  color: #FF0000;
+  font-size: 120%;
 }
 @media only screen and (max-width: 700px){
   #log{

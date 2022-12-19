@@ -69,7 +69,7 @@
 .button{
   padding: 1% 4%;
   border: none;
-  background-color:var(--cor_secundaria);
+  background-color:var(--cor_primaria);
   font-size: 80%;
   border-radius: 20px;
   margin: 1%;
